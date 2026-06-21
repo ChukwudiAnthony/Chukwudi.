@@ -1,0 +1,171 @@
+<DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jackson Michael Nwosu - INS205 Assessment</title>
+
+    <style>
+        /* General page styling */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 30px;
+            line-height: 1.8;
+        }
+
+        /* Main page heading */
+
+        h1 {
+            text-align: center;
+            background-color: #1f4e79;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+        }
+
+        /* Section styling */
+
+        section {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #1f4e79;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        /* Send Email button */
+
+        #send-btn {
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            display: inline-block;
+        }
+
+        #send-btn:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>INS205 Static Web Application</h1>
+
+    <!-- Section introducing myself -->
+
+    <section>
+
+        <h2>About Me</h2>
+
+        <p><strong>Full Name:</strong> Jackson Michael Nwosu</p>
+
+        <p><strong>Department:</strong> Computer Science</p>
+
+        <p><strong>Matric Number:</strong> UJ/2024/NS/0891</p>
+
+        <p><strong>Level:</strong> 200 Level</p>
+
+        <p>
+            I am a Computer Science student at the University of Jos.
+            I enjoy learning about technology, web development and
+            software engineering. I love exploring new ideas and
+            improving my programming skills.
+        </p>
+
+    </section>
+
+
+    <!-- Section describing the webpage -->
+
+    <section>
+
+        <h2>About This Page</h2>
+
+        <p>
+            This webpage was created as part of the INS205 assessment.
+            It demonstrates the use of HTML5 and CSS to create a simple
+            static web application without external frameworks.
+        </p>
+
+        <p>
+            The webpage contains my personal information, details about
+            the course and a contact section with a working email button.
+            The email button automatically receives a unique colour based
+            on my matriculation number using JavaScript.
+        </p>
+
+    </section>
+
+
+    <!-- Contact Section -->
+
+    <section>
+
+        <h2>Contact Me</h2>
+
+        <p>
+            Click the button below to send me an email.
+        </p>
+
+        <a href="mailto:2024ns0891@unijos.edu.ng"
+        id="send-btn">
+            Send Email
+        </a>
+
+    </section>
+
+
+<script>
+/* -------------------------------------------------------
+Matric-number → button colour
+Replace the matric value below with your own number.
+------------------------------------------------------- */
+const matric = "UJ/2024/NS/0891"; // <-- CHANGE THIS TO YOUR MAT. NO.
+
+/* CHANGE NOTHING BEYOND THIS POINT - CHANGE NOTHING BEYOND THIS POINT */
+
+function hashString(str) {
+let hash = 0;
+for (let i = 0; i < str.length; i++) {
+hash = (hash * 31 + str.charCodeAt(i)) >>> 0;
+}
+return hash;
+}
+
+// Normalise input
+const normalised = matric.trim().toUpperCase();
+
+// Map the hash to a hue value between 0 and 359 degrees
+const hue = hashString(normalised) % 360;
+
+// Build an HSL colour: fixed saturation & lightness, varying hue
+const buttonColour = `hsl(${hue}, 65%, 45%)`;
+
+// Apply the colour to the Send Email button
+document.getElementById("send-btn").style.background = buttonColour;
+
+</script>
+
+</body>
+</html>
